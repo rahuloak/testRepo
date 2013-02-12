@@ -13,7 +13,7 @@ var simpleFormat = false;
 var tokenAlphabet = ['a', 'b', 'c', 'd', 'e', 'f',
 					 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 					 
-var p = {"aps":{"alert":"This is an alert","badge":0,"sound":"buzz"}};
+var p = {"aps":{"alert":"This is an alert","badge":0,"sound":"chime"}};
 
 var client = new net.Socket();
 client.connect(PORT, HOST, function() {
