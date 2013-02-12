@@ -32,10 +32,6 @@
 
  		sock.end();
  	});
- 	
- 	sock.on('close', function(data) {
- 		console.log('CLOSED connection');
- 	});
  
  }).listen(PORT, HOST);
  
