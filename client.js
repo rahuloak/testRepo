@@ -18,7 +18,7 @@ var p = {"aps":{"alert":"This is an alert","badge":0,"sound":"buzz"}};
 var client = new net.Socket();
 client.connect(PORT, HOST, function() {
 
-    console.log('CONNECTED TO: ' + HOST + ':' + PORT);
+    console.log('Connected to: ' + HOST + ':' + PORT);
     
     // Send a certain number of packets at a time
     for(var i=0;i<NUM_PACKETS;++i) {
