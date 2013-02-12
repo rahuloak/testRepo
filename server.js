@@ -19,8 +19,6 @@
  	});
  	
  	sock.on('end', function() {
- 		console.log('END received. Size of array:' + allData.length);
- 		
  		try {
 	 		// Read buffers of data, one at a time
 	 		for( var i in allData ) {
@@ -47,30 +45,36 @@
 
  	var offset = 0;
  	
- 	// Format 
+ 	// Command byte 
  	var command = data.readUInt8(offset);
  	offset++;
  	
  	// Handle enhanced mode
  	if( command == 1 ) {
+ 		// Identifier
  		var id = data.readUInt32BE(offset);
  		offset += 4;
  		
+ 		// Expiration
  		var expiry = data.readUInt32BE(offset);
  		offset += 4;
  	}
  	
+ 	// Token length
  	var tokenLength = data.readUInt16BE(offset);
  	offset += 2;
  	
+ 	// Token
  	var tempBuf = new Buffer(tokenLength);
  	data.copy(tempBuf, 0, offset, offset+tokenLength);
  	var token = tempBuf.toString();
  	offset += tokenLength;
  	
+ 	// Payload length
  	var payloadLength = data.readUInt16BE(offset);
  	offset += 2;
  	
+ 	// Payload
  	var pBuf = new Buffer(payloadLength);
  	data.copy(pBuf, 0, offset, offset+payloadLength);
  	var payload = pBuf.toString();

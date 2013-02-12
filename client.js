@@ -25,7 +25,6 @@ client.connect(PORT, HOST, function() {
     
 	    var token = generateToken(TOKEN_LENGTH);
 	    var payload = JSON.stringify(p);
-	    console.log(payload);
 	    var b = createBuffer(token, payload);
 	    
 	    client.write(b);
@@ -91,6 +90,7 @@ var createBuffer = function(token, payload) {
 	buf.writeUInt16BE(payload.length, offset);
 	offset += 2;
 	
+	// Actual payload
 	buf.write(payload, offset);
 	
 	return buf;
